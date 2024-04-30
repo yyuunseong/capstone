@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import styled from "styled-components";
+import MainPage from './component/page/MainPage';
+import VideoUploadPage from './component/page/VideoUploadPage';
+import InformationPage from './component/page/InformationPage';
+import ResultPage from './component/page/ResultPage';
 
-function App() {
+const MainTitleText = styled.p`
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+`;
+
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <MainTitleText>교통사고 과실비율 판단 AI 시스템</MainTitleText>
+      <Routes>
+        <Route index element={<MainPage />} />
+        <Route path="video-upload" element={<VideoUploadPage />} />
+        <Route path="add-info" element={<InformationPage />} />
+        <Route path="result-view" element={<ResultPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
