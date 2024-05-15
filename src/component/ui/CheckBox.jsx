@@ -2,13 +2,42 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const StyledCheckbox = styled.input`
-  margin-right: 10px; //체크박스와 글자 사이의 간격
-  cursor: auto;
+  appearance: none; //기본적으로 브라우저가 제공하는 체크박스의 기본 디자인을 없애는 역할
+  width: 17px;
+  height: 17px;
+  border-radius: 10%;
+  border: 2px solid white;
+  outline: none;
+  transition: 0.1s; //체크박스의 변화가 부드럽게 일어나도록 함
+  margin-right: 10px;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+
+  &:checked {
+    background-color: white;
+    border-color: white;
+  }
+
+  &:checked::after {
+    content: "";
+    position: absolute;
+    top: 0px; /* 체크 표시의 위치를 조절함 */
+    left: 2px; /* 체크 표시의 위치를 조절함 */
+    width: 5px; /* 체크 표시의 너비를 조절함 */
+    height: 8px; /* 체크 표시의 높이를 조절함 */
+    border-bottom: 3px solid black; /* 체크 표시의 선 모양을 설정함 */
+    border-right: 3px solid black; /* 체크 표시의 선 모양을 설정함 */
+    transform: rotate(45deg); /* 체크 표시를 45도 회전시킴 */
+  }
 `;
 
 const Label = styled.label`
-  color: black; //글자 색상
-  font-size: 35px; //글자 크기
+  font-size: 19px; //글자 크기
+  font-family: "Jalnan";
+  color: white;
+  line-height: 1.7;
 `;
 
 function CheckBox() {
@@ -39,7 +68,7 @@ function CheckBox() {
           checked={checkboxes.checkbox1}
           onChange={handleCheckboxChange}
         />
-        우회전
+        본인 과속
       </Label>
       <br />
       <Label>
@@ -49,7 +78,7 @@ function CheckBox() {
           checked={checkboxes.checkbox2}
           onChange={handleCheckboxChange}
         />
-        좌회전
+        상대 과속
       </Label>
       <br />
       <Label>
@@ -69,7 +98,7 @@ function CheckBox() {
           checked={checkboxes.checkbox4}
           onChange={handleCheckboxChange}
         />
-        차선 변경 없이 직진
+        더 뭐쓰지
       </Label>
       <br />
       <Label>
@@ -79,7 +108,7 @@ function CheckBox() {
           checked={checkboxes.checkbox5}
           onChange={handleCheckboxChange}
         />
-        차선 변경하며 직진
+        뭐 쓸까요
       </Label>
     </div>
   );

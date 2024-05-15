@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: "SokchoBada";
+  src: url("./font/SokchoBadaDotum.ttf");
+}
+
+@font-face {
+  font-family: "Giants";
+  src: url("./font/Giants-Inline.ttf");
+}
+
+@font-face {
+  font-family: "Jalnan";
+  src: url("./font/JalnanGothicTTF.ttf");
+}
