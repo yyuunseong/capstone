@@ -6,7 +6,7 @@ const StyledCheckbox = styled.input`
   width: 17px;
   height: 17px;
   border-radius: 10%;
-  border: 2px solid white;
+  border: 2px solid black;
   outline: none;
   transition: 0.1s; //체크박스의 변화가 부드럽게 일어나도록 함
   margin-right: 10px;
@@ -14,11 +14,6 @@ const StyledCheckbox = styled.input`
   display: inline-block;
   vertical-align: middle;
   position: relative;
-
-  &:checked {
-    background-color: white;
-    border-color: white;
-  }
 
   &:checked::after {
     content: "";
@@ -34,41 +29,35 @@ const StyledCheckbox = styled.input`
 `;
 
 const Label = styled.label`
-  font-size: 19px; //글자 크기
+  font-size: 20px; //글자 크기
   font-family: "Jalnan";
-  color: white;
+  color: black;
   line-height: 1.7;
 `;
 
-function CheckBox() {
-    // 각 체크박스의 상태를 관리하기 위한 상태 변수
-    const [checkboxes, setCheckboxes] = useState({
-      checkbox1: false,
-      checkbox2: false,
-      checkbox3: false,
-      checkbox4: false,
-      checkbox5: false
-    });
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    gap: 70px;
+`
 
-    // 체크박스 상태를 업데이트하는 함수
-  const handleCheckboxChange = (event) => {
-    const { name, checked } = event.target;
-    setCheckboxes(prevState => ({
-      ...prevState,
-      [name]: checked
-    }));
-  };
+const LabelWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+`
 
+function CheckBox({ checkboxes, onChange }) {
   return (
-    <div>
+    <Wrapper>
+      <LabelWrapper>
       <Label>
         <StyledCheckbox
           type="checkbox"
           name="checkbox1"
           checked={checkboxes.checkbox1}
-          onChange={handleCheckboxChange}
+          onChange={onChange}
         />
-        본인 과속
+        A 현저한 과실
       </Label>
       <br />
       <Label>
@@ -76,9 +65,9 @@ function CheckBox() {
           type="checkbox"
           name="checkbox2"
           checked={checkboxes.checkbox2}
-          onChange={handleCheckboxChange}
+          onChange={onChange}
         />
-        상대 과속
+        A 중대한 과실
       </Label>
       <br />
       <Label>
@@ -86,9 +75,9 @@ function CheckBox() {
           type="checkbox"
           name="checkbox3"
           checked={checkboxes.checkbox3}
-          onChange={handleCheckboxChange}
+          onChange={onChange}
         />
-        정지
+        B 현저한 과실
       </Label>
       <br />
       <Label>
@@ -96,21 +85,76 @@ function CheckBox() {
           type="checkbox"
           name="checkbox4"
           checked={checkboxes.checkbox4}
-          onChange={handleCheckboxChange}
+          onChange={onChange}
         />
-        더 뭐쓰지
+        B 중대한 과실
       </Label>
-      <br />
+      </LabelWrapper>
+      
+      <LabelWrapper>
       <Label>
         <StyledCheckbox
           type="checkbox"
           name="checkbox5"
           checked={checkboxes.checkbox5}
-          onChange={handleCheckboxChange}
+          onChange={onChange}
         />
-        뭐 쓸까요
+        A 과속
       </Label>
-    </div>
+      <br />
+      <Label>
+        <StyledCheckbox
+          type="checkbox"
+          name="checkbox6"
+          checked={checkboxes.checkbox6}
+          onChange={onChange}
+        />
+        A 서행
+      </Label>
+      <br />
+      <Label>
+        <StyledCheckbox
+          type="checkbox"
+          name="checkbox7"
+          checked={checkboxes.checkbox7}
+          onChange={onChange}
+        />
+        B 과속
+      </Label>
+      <br />
+      <Label>
+        <StyledCheckbox
+          type="checkbox"
+          name="checkbox8"
+          checked={checkboxes.checkbox8}
+          onChange={onChange}
+        />
+        B 서행
+      </Label>
+      </LabelWrapper>
+
+      <LabelWrapper>
+      <Label>
+        <StyledCheckbox
+          type="checkbox"
+          name="checkbox9"
+          checked={checkboxes.checkbox9}
+          onChange={onChange}
+        />
+        A 일방통행 위반
+      </Label>
+      <br />
+      <Label>
+        <StyledCheckbox
+          type="checkbox"
+          name="checkbox10"
+          checked={checkboxes.checkbox10}
+          onChange={onChange}
+        />
+        B 일방통행 위반
+      </Label>
+      </LabelWrapper>
+    </Wrapper>
   );
 }
 

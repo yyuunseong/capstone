@@ -1,62 +1,64 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../ui/Button";
 import PageIndicator from '../ui/PageIndicator';
 
 const Wrapper = styled.div`
-    padding: 50px;
     height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    
-    background-color: black;
-`;
-
-const MainTitleText = styled.p`
-  font-size: 35px;
-  font-family: "Jalnan";
-  color: white;
-  margin-bottom: 50px;
-  margin-right: 800px;
-  border-bottom: 3px solid white;
-`;
-
-const MainText = styled.p`
-  font-size: 20px;
-  line-height: 1.2;
-  padding: 12px;
-  font-family: "Jalnan";
-  font-style: italic;
-  color: white;
-  text-align: center;
-  display: inline;
-`;
-
-const SmallText = styled.p`
-  font-size: 15px;
-  line-height: 1.2;
-  font-family: "Jalnan";
-  color: white;
-  text-align: center;
-  display: inline;
-  margin-left: 30px;
 `;
 
 const TextWrapper = styled.div`
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  margin-bottom: 100px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+`;
+
+const ImageWrapper = styled.div`
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 70px;
+`;
+
+const SmallWrapper = styled.div`
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 const ButtonWrapper = styled.div`
-    margin-left: 450px;
+    margin-top: 50px;
+    align-self: center;
+`;
+
+const SubTitle = styled.p`
+    font-size: 34px;
+    line-height: 1.2;
+    padding: 12px;
+    font-family: "Jalnan";
+    color: black;
+    text-align: center;
+`;
+
+const MainText = styled.p`
+    font-size: 24px;
+    line-height: 1.2;
+    padding: 12px;
+    font-family: "Jalnan";
+    color: black;
+    text-align: center;
+`;
+
+const Image = styled.img`
+    width: 10vw;
+    height: 100%;
+    object-fit: cover;
 `;
 
 function DescriptionPage(props) {
@@ -66,41 +68,45 @@ function DescriptionPage(props) {
 
     return (
         <Wrapper>
-            <MainTitleText>교통사고 과실비율 판단 AI 시스템</MainTitleText>
+            <PageIndicator pages={pages} currentPage={currentPage} />
             <TextWrapper>
-                    <MainText>사용법</MainText>
-                    <MainText>
-                        1 사고 영상 입력
-                        <SmallText>
-                            교통사고 상황이 담긴 블랙박스 영상을 입력해주세요.
-                        </SmallText>
-                    </MainText>
-                    <MainText>
-                        2 교통사고 분석
-                        <SmallText>
-                            시스템이 AI를 이용하여 교통사고 상황을 분석합니다.
-                        </SmallText>
-                    </MainText>
-                    <MainText>
-                        3 과실비율 확인하기
-                        <SmallText>
-                            분석한 사고 상황을 토대로 운전자의 과실비율을 알려줍니다.
-                        </SmallText>
-                    </MainText>
-                </TextWrapper>
+                <SubTitle>사용법</SubTitle>
+                <ImageWrapper>
+                    <SmallWrapper>
+                        <Image src="video.png" alt="video" />
+                        <br/>
+                        <MainText>1 사고 영상<br/>입력</MainText>
+                    </SmallWrapper>
+                    
+                    <SmallWrapper>
+                        <Image src="information.png" alt="information" />
+                        <MainText>2 추가 정보<br/>입력</MainText>
+                    </SmallWrapper>
+
+                    <SmallWrapper>
+                        <Image src="analyze.png" alt="analyze" />
+                        <MainText>3 교통사고<br/>상황 분석</MainText>
+                    </SmallWrapper>
+
+                    <SmallWrapper>
+                        <Image src="result.png" alt="result" />
+                        <MainText>4 과실비율<br/>확인</MainText>
+                    </SmallWrapper>
+                </ImageWrapper>
+
+
                 <ButtonWrapper>
                     <Button
-                        bgColor="transparent"
+                        bgColor="#242a88"
                         textColor="white"
-                        fontSize="22px"
-                        title="판단 시작하기!"
+                        fontSize="21px"
+                        title="판단 시작하기"
                         onClick={() => {
                             navigate("/video-upload");
                         }}
                     />
                 </ButtonWrapper>
-
-                <PageIndicator pages={pages} currentPage={currentPage} />
+            </TextWrapper>
         </Wrapper>
     )
 }
